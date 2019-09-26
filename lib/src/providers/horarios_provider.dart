@@ -7,20 +7,18 @@ import 'package:http_parser/http_parser.dart';
 
 import 'package:mime_type/mime_type.dart';
 
-import 'package:classroom/src/models/aula_model.dart';
+import 'package:classroom/src/models/horario_model.dart';
 
-class AulasProvider {
+class HorariosProvider {
 
   final String _url = 'https://classroom-info.firebaseio.com';
 
 
-  Future<bool> crearAula( AulaModel aula ) async {
-    aula.crearCalendario();
+  Future<bool> crearAula( HorarioModel aula ) async {
     
-    final url = '$_url/aulas.json';
-    
+    final url = '$_url/horarios.json';
 
-    final resp = await http.post( url, body: aulaModelToJson(aula) );
+    final resp = await http.post( url, body: horarioModelToJson(aula) );
 
     final decodedData = json.decode(resp.body);
 
@@ -30,11 +28,11 @@ class AulasProvider {
 
   }
 
-  Future<bool> editarAula( AulaModel aula ) async {
+  Future<bool> editarAula( HorarioModel aula ) async {
     
     final url = '$_url/aulas/${ aula.id }.json';
 
-    final resp = await http.put( url, body: aulaModelToJson(aula) );
+    final resp = await http.put( url, body: horarioModelToJson(aula) );
 
     final decodedData = json.decode(resp.body);
 
@@ -46,20 +44,20 @@ class AulasProvider {
 
 
 
-  Future<List<AulaModel>> cargarAulas() async {
+  Future<List<HorarioModel>> cargarAulas() async {
 
     final url  = '$_url/aulas.json';
     final resp = await http.get(url);
 
     final Map<String, dynamic> decodedData = json.decode(resp.body);
-    final List<AulaModel> aulas = new List();
+    final List<HorarioModel> aulas = new List();
 
 
     if ( decodedData == null ) return [];
 
     decodedData.forEach( ( id, aul ){
 
-      final aulaTemp = AulaModel.fromJson(aul);
+      final aulaTemp = HorarioModel.fromJson(aul);
       aulaTemp.id = id;
 
       aulas.add( aulaTemp );

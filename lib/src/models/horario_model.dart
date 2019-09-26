@@ -1,37 +1,48 @@
 import 'dart:convert';
 
-UbicacionModel ubicacionModelFromJson(String str) => UbicacionModel.fromJson(json.decode(str));
+import 'package:classroom/src/models/usuario_model.dart';
 
-String ubicacionModelToJson(UbicacionModel data) => json.encode(data.toJson());
 
-class UbicacionModel {
-    String id;
-    String dia;
-    String horaInicio;
-    String horaFin;
-    String fotoUrl;
+HorarioModel horarioModelFromJson(String str) => HorarioModel.fromJson(json.decode(str));
 
-    UbicacionModel({
+String horarioModelToJson(HorarioModel data) => json.encode(data.toJson());
+
+
+
+class HorarioModel{
+  String id;
+  String hora;
+  String estado;
+  List<UsuarioModel> responsables;
+
+  HorarioModel({
         this.id,
-        this.dia,
-        this.horaInicio,
-        this.horaFin,
-        this.fotoUrl,
+        this.hora,
+        this.estado,
+        this.responsables,
     });
 
-    factory UbicacionModel.fromJson(Map<String, dynamic> json) => UbicacionModel(
+    factory HorarioModel.fromJson(Map<String, dynamic> json) {
+      List<UsuarioModel> resList;
+      if (json['responsables']==null){
+      resList = [];
+      }else{
+      var rlist = json['responsables'] as List;
+      resList = rlist.map((i)=>UsuarioModel.fromJson(i)).toList();
+      }
+      return HorarioModel(
         id            : json["id"],
-        dia           : json["dia"],
-        horaInicio    : json["hora_inicio"],
-        horaFin       : json["hora_fin"],
-        fotoUrl       : json["fotoUrl"],
+        hora          : json["hora"],
+        estado        : json["estado"],
+        responsables  : resList,
     );
+    } 
 
     Map<String, dynamic> toJson() => {
-        "id"            : id,
-        "dia"           : dia,
-        "hora_inicio"   : horaInicio,
-        "hora_fin"      : horaFin,
-        "fotoUrl"       : fotoUrl,
+        //"id"          : id,
+        "hora"        : hora,
+        "estado"      : estado,
+        "responsables": responsables,
+        //"responsables": List<Usuario>.from(responsables.map((x) => x.toJson())),
     };
 }

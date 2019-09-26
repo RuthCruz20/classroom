@@ -1,9 +1,14 @@
+import 'package:classroom/src/pages/home_establecimiento.dart';
+import 'package:classroom/src/pages/mapa_establecimiento.dart';
+import 'package:flutter/material.dart';
+
+
 import 'package:classroom/src/pages/aula_page.dart';
+import 'package:classroom/src/pages/establecimiento_page.dart';
 import 'package:classroom/src/pages/home_page.dart';
 import 'package:classroom/src/pages/login_page.dart';
 import 'package:classroom/src/pages/registro_page.dart';
 import 'package:classroom/src/preferencias_usuario/preferencias_usuario.dart';
-import 'package:flutter/material.dart';
 
 import 'package:classroom/src/bloc/provider.dart';
 
@@ -27,10 +32,13 @@ class MyApp extends StatelessWidget {
         title: 'Material App',
         initialRoute: 'login',
         routes: {
-          'login' : ( BuildContext context ) => LoginPage(),
-          'registro' : ( BuildContext context ) => RegistroPage(),
-          'home'  : ( BuildContext context ) => HomePage(),
-          'aula'  : ( BuildContext context ) => AulaPage(),
+          'login'              : ( BuildContext context ) => LoginPage(),
+          'registro'           : ( BuildContext context ) => RegistroPage(),
+          'home'               : ( BuildContext context ) => HomePage(),
+          'aula'               : ( BuildContext context ) => AulaPage(),
+          'establecimiento'    : ( BuildContext context ) => EstablecimientoPage(),
+          'homeEstablecimiento': ( BuildContext context ) => HomeEstablecimiento(),
+          'mapaEstablecimiento': ( BuildContext context ) => MapaPage(),
         },
         theme: ThemeData(
           primaryColor: Colors.deepPurple,

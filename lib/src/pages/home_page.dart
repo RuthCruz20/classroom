@@ -1,3 +1,4 @@
+import 'package:classroom/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:classroom/src/bloc/provider.dart';
 import 'package:classroom/src/providers/aulas_provider.dart';
@@ -6,6 +7,7 @@ import 'package:classroom/src/models/aula_model.dart';
 
 
 class HomePage extends StatelessWidget {
+  static final String routeName = 'home';
   
   final aulasProvider = new AulasProvider();
 
@@ -18,6 +20,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home')
       ),
+      drawer: MenuWidget(),
       body: _crearListado(),
       floatingActionButton: _crearBoton(context),
     );
@@ -69,7 +72,7 @@ class HomePage extends StatelessWidget {
               ),
             
             ListTile(
-              title: Text('${ aula.nombreAula } - ${ aula.nombreMateria}'),
+              title: Text('Nombre: ${ aula.nombre } - Establecimiento: ${aula.establecimiento.descripcion}'),
               subtitle: Text( aula.id ),
               onTap: () => Navigator.pushNamed(context, 'aula', arguments: aula ),
             ),

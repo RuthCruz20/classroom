@@ -6,7 +6,9 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:classroom/src/models/aula_model.dart';
 import 'package:classroom/src/providers/aulas_provider.dart';
-import 'package:classroom/src/utils/utils.dart' as utils;
+import 'package:classroom/src/providers/establecimientos_provider.dart';
+import 'package:classroom/src/models/establecimiento_model.dart';
+
 
 
 class AulaPage extends StatefulWidget {
@@ -20,7 +22,10 @@ class _AulaPageState extends State<AulaPage> {
   final formKey     = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final aulaProvider = new AulasProvider();
-
+  final establecimientosProvider = new EstablecimientosProvider();
+  
+  EstablecimientoModel _opcionSeleccionada = new EstablecimientoModel(); 
+  //String _opcionSeleccionada = 'hola';
   AulaModel aula = new AulaModel();
   bool _guardando = false;
   File foto;
@@ -57,9 +62,8 @@ class _AulaPageState extends State<AulaPage> {
               children: <Widget>[
                 _mostrarFoto(),
                 _crearNombre(),
-                _crearNombreMateria(),
-                //_crearPrecio(),
-                _crearDisponible(),
+                _crearDropdown(),
+                Divider(),
                 _crearBoton()
               ],
             ),
@@ -73,12 +77,12 @@ class _AulaPageState extends State<AulaPage> {
   Widget _crearNombre() {
 
     return TextFormField(
-      initialValue: aula.nombreAula,
+      initialValue: aula.nombre,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: 'Aula'
+        labelText: 'Nombre: '
       ),
-      onSaved: (value) => aula.nombreAula = value,
+      onSaved: (value) => aula.nombre = value,
       validator: (value) {
         if ( value.length < 3 ) {
           return 'Ingrese el nombre del Aula';
@@ -89,60 +93,50 @@ class _AulaPageState extends State<AulaPage> {
     );
 
   }
-  Widget _crearNombreMateria() {
+ List<DropdownMenuItem<EstablecimientoModel>> getOpcionesEstablecimientos(List<EstablecimientoModel> establecimientos){
+    List<DropdownMenuItem<EstablecimientoModel>> lista = new List();
+    establecimientos.forEach((est){
+        lista.add(new DropdownMenuItem<EstablecimientoModel>(
+          child: Text(est.descripcion),
+          value: est,
+          ));
+    });     
+    return lista;
+  }
+Widget _crearDropdown() {
+    return FutureBuilder(
+      future: establecimientosProvider.cargarEstablecimientos(),
+      builder: (BuildContext context, AsyncSnapshot<List<EstablecimientoModel>> snapshot) {
+        if ( snapshot.hasData ) {
 
-    return TextFormField(
-      initialValue: aula.nombreMateria,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        labelText: 'Materia'
-      ),
-      onSaved: (value) => aula.nombreMateria = value,
-      validator: (value) {
-        if ( value.length < 3 ) {
-          return 'Ingrese el nombre de la Materia';
+          final establecimientos = snapshot.data;
+          
+           
+             _opcionSeleccionada = establecimientos[0];
+        
+                   
+          
+          return DropdownButton<EstablecimientoModel>(
+            value: _opcionSeleccionada,
+            items: getOpcionesEstablecimientos(establecimientos),
+            onChanged: (opcion){
+              setState(() {
+                _opcionSeleccionada=opcion;
+                aula.establecimiento=_opcionSeleccionada;
+              });
+              
+            },
+            
+                
+            
+          );
+
         } else {
-          return null;
+          return Center( child: CircularProgressIndicator());
         }
       },
     );
-
   }
-
-/*
-  Widget _crearPrecio() {
-    return TextFormField(
-      initialValue: aula.valor.toString(),
-      keyboardType: TextInputType.numberWithOptions(decimal: true),
-      decoration: InputDecoration(
-        labelText: 'Precio'
-      ),
-      onSaved: (value) => aula.valor = double.parse(value),
-      validator: (value) {
-
-        if ( utils.isNumeric(value)  ) {
-          return null;
-        } else {
-          return 'Sólo números';
-        }
-
-      },
-    );
-  }*/
-
-  Widget _crearDisponible() {
-
-    return SwitchListTile(
-      value: aula.disponibilidad,
-      title: Text('Disponiblilidad'),
-      activeColor: Colors.deepPurple,
-      onChanged: (value)=> setState((){
-        aula.disponibilidad = value;
-      }),
-    );
-
-  }
-
 
 
   Widget _crearBoton() {
@@ -250,6 +244,5 @@ class _AulaPageState extends State<AulaPage> {
 
 
 }
-
 
 
