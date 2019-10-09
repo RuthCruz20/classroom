@@ -22,6 +22,12 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
+            leading: Icon( Icons.search, color: Colors.blue ),
+            title: Text('Buscar'),
+            onTap: ()=> Navigator.pushReplacementNamed(context, HomePage.routeName ) ,
+          ),
+          
+          ListTile(
             leading: Icon( Icons.pages, color: Colors.blue ),
             title: Text('Home'),
             onTap: ()=> Navigator.pushReplacementNamed(context, HomePage.routeName ) ,
