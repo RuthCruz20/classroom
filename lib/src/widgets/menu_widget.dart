@@ -15,7 +15,7 @@ class MenuWidget extends StatelessWidget {
             child: Container(),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/menu-img.jpg'),
+                image: AssetImage('assets/menu.jpg'),
                 fit: BoxFit.cover
               )
             ),
