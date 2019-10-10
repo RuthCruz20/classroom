@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 
+import 'package:classroom/src/pages/login_page.dart';
 import 'package:classroom/src/pages/home_page.dart';
 
 
@@ -22,9 +24,9 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.search, color: Colors.blue ),
-            title: Text('Buscar'),
-            onTap: ()=> Navigator.pushReplacementNamed(context, HomePage.routeName ) ,
+            leading: Icon( Icons.contacts, color: Colors.blue ),
+            title: Text('Ingresar'),
+            onTap: ()=> Navigator.pushReplacementNamed(context, LoginPage.routeName ) ,
           ),
           
           ListTile(

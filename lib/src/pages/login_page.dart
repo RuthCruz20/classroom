@@ -6,6 +6,7 @@ import 'package:classroom/src/utils/utils.dart';
 
 class LoginPage extends StatelessWidget {
 
+  static final String routeName = 'login';
   final usuarioProvider = new UsuarioProvider();
 
 
