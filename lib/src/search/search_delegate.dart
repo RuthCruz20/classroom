@@ -5,7 +5,9 @@ class DataSearch extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
     // Las acciones de nuestro AppBar
-    return null;
+    return [
+      
+    ];
   }
 
   @override
