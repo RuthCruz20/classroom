@@ -18,7 +18,19 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home')
+        title: Text('Home'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: (){
+              /*showSearch(
+                context: context,
+                delegate: ,
+                query: 
+              );*/
+            },
+          )
+        ],
       ),
       drawer: MenuWidget(),
       body: _crearListado(),
