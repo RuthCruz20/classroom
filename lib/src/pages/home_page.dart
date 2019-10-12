@@ -1,3 +1,4 @@
+import 'package:classroom/src/search/search_delegate.dart';
 import 'package:classroom/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:classroom/src/bloc/provider.dart';
@@ -23,11 +24,10 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: (){
-              /*showSearch(
+              showSearch(
                 context: context,
-                delegate: ,
-                query: 
-              );*/
+                delegate: DataSearch(),
+              );
             },
           )
         ],
