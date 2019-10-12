@@ -38,20 +38,7 @@ class DataSearch extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     // Son las sugerencias que aparecen cuando la persona escribe
-    
-    final listaSugerida = (query.isEmpty) 
-                          ? 
-    
-    return ListView.builder(
-      itemCount: ,
-      itemBuilder: (context, i){
-        return ListTile(
-          leading: Icon(Icons.home),
-          title: Text('data'),
-          onTap: (){},
-        )
-      },
-    );
+    return Container();
   }
 
 

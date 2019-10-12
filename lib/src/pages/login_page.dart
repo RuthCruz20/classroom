@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+
 import 'package:classroom/src/bloc/provider.dart';
 import 'package:classroom/src/providers/usuario_provider.dart';
-
 import 'package:classroom/src/utils/utils.dart';
 
 class LoginPage extends StatelessWidget {
 
   static final String routeName = 'login';
   final usuarioProvider = new UsuarioProvider();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+        body: Stack(
         children: <Widget>[
           _crearFondo( context ),
           _loginForm( context ),
         ],
-      )
+      ),
     );
   }
 
