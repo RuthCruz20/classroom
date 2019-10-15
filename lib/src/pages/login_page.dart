@@ -148,18 +148,37 @@ class LoginPage extends StatelessWidget {
       stream: bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot){
         
-        return RaisedButton(
-          child: Container(
-            padding: EdgeInsets.symmetric( horizontal: 80.0, vertical: 15.0),
-            child: Text('Ingresar'),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0)
-          ),
-          elevation: 0.0,
-          color: Colors.deepPurple,
-          textColor: Colors.white,
-          onPressed: snapshot.hasData ? ()=> _login(bloc, context) : null
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              child: Container(
+                padding: EdgeInsets.symmetric( horizontal: 30.0, vertical: 15.0),
+                child: Text('Ingresar'),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)
+              ),
+              elevation: 0.0,
+              color: Colors.deepPurple,
+              textColor: Colors.white,
+              onPressed: snapshot.hasData ? ()=> _login(bloc, context) : null
+            ),
+            SizedBox(width: 10.0),
+            RaisedButton(
+              child: Container(
+                padding: EdgeInsets.symmetric( horizontal: 30.0, vertical: 15.0),
+                child: Text('Cancelar'),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)
+              ),
+              elevation: 0.0,
+              color: Colors.deepPurple,
+              textColor: Colors.white,
+              onPressed: () => Navigator.pushReplacementNamed(context, 'home')
+            ),
+          ],
         );
       },
     );
@@ -207,20 +226,20 @@ class LoginPage extends StatelessWidget {
 
     return Stack(
       children: <Widget>[
-        /*fondoModaro,
+        fondoModaro,
         Positioned( top: 90.0, left: 30.0, child: circulo ),
         Positioned( top: -40.0, right: -30.0, child: circulo ),
         Positioned( bottom: -50.0, right: -10.0, child: circulo ),
         Positioned( bottom: 120.0, right: 20.0, child: circulo ),
-        Positioned( bottom: -50.0, left: -20.0, child: circulo ),*/
+        Positioned( bottom: -50.0, left: -20.0, child: circulo ),
         
         Container(
-          padding: EdgeInsets.only(top: 80.0),
+          padding: EdgeInsets.only(top: 30.0),
           child: Column(
             children: <Widget>[
-              Icon( Icons.person_pin_circle, color: Colors.blue, size: 100.0 ),
+              Icon( Icons.person_pin_circle, color: Colors.white, size: 100.0 ),
               SizedBox( height: 10.0, width: double.infinity ),
-              Text('Class Room', style: TextStyle( color: Colors.blue, fontSize: 25.0 ))
+              Text('Class Room', style: TextStyle( color: Colors.white, fontSize: 25.0 ))
             ],
           ),
         )

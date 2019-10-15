@@ -24,25 +24,25 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.contacts, color: Colors.blue ),
+            leading: Icon( Icons.supervisor_account, color: Colors.blue ),
             title: Text('Ingresar'),
             onTap: ()=> Navigator.pushReplacementNamed(context, LoginPage.routeName ) ,
           ),
           
           ListTile(
-            leading: Icon( Icons.pages, color: Colors.blue ),
+            leading: Icon( Icons.home, color: Colors.blue ),
             title: Text('Home'),
             onTap: ()=> Navigator.pushReplacementNamed(context, HomePage.routeName ) ,
           ),
 
           ListTile(
-            leading: Icon( Icons.party_mode, color: Colors.blue ),
+            leading: Icon( Icons.camera_front, color: Colors.blue ),
             title: Text('Scanear'),
             onTap: (){ },
           ),
 
           ListTile(
-            leading: Icon( Icons.people, color: Colors.blue ),
+            leading: Icon( Icons.location_city, color: Colors.blue ),
             title: Text('Establecimientos'),
             onTap: ()=> Navigator.pushReplacementNamed(context, 'homeEstablecimiento' ) ,
           ),

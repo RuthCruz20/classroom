@@ -207,18 +207,37 @@ class RegistroPage extends StatelessWidget {
       stream: bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot){
         
-        return RaisedButton(
-          child: Container(
-            padding: EdgeInsets.symmetric( horizontal: 80.0, vertical: 15.0),
-            child: Text('Registrar'),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0)
-          ),
-          elevation: 0.0,
-          color: Colors.deepPurple,
-          textColor: Colors.white,
-          onPressed: snapshot.hasData ? ()=> _register(bloc, context) : null
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              child: Container(
+                padding: EdgeInsets.symmetric( horizontal: 30.0, vertical: 15.0),
+                child: Text('Registrar'),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)
+              ),
+              elevation: 0.0,
+              color: Colors.deepPurple,
+              textColor: Colors.white,
+              onPressed: snapshot.hasData ? ()=> _register(bloc, context) : null
+            ),
+            SizedBox(width: 10.0),
+            RaisedButton(
+              child: Container(
+                padding: EdgeInsets.symmetric( horizontal: 30.0, vertical: 15.0),
+                child: Text('Cancelar'),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)
+              ),
+              elevation: 0.0,
+              color: Colors.deepPurple,
+              textColor: Colors.white,
+              onPressed: () => Navigator.pushReplacementNamed(context, 'home')
+            ),
+          ],
         );
       },
     );
