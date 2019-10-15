@@ -7,7 +7,7 @@ class DataSearch extends SearchDelegate {
     // Las acciones de nuestro AppBar
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: Icon(Icons.cancel),
         onPressed: (){
             query = '';
         },

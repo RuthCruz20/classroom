@@ -13,13 +13,13 @@ class RegistroPage extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           _crearFondo( context ),
-          _loginForm( context ),
+          _registroForm( context ),
         ],
       )
     );
   }
 
-  Widget _loginForm(BuildContext context) {
+  Widget _registroForm(BuildContext context) {
 
     final bloc = Provider.of(context);
     final size = MediaQuery.of(context).size;
@@ -57,6 +57,10 @@ class RegistroPage extends StatelessWidget {
                 _crearEmail( bloc ),
                 SizedBox( height: 30.0 ),
                 _crearPassword( bloc ),
+                SizedBox( height: 30.0 ),
+                _crearNombre( bloc ),
+                SizedBox( height: 30.0 ),
+                _crearTipo( bloc ),
                 SizedBox( height: 30.0 ),
                 _crearBoton( bloc )
               ],
@@ -133,6 +137,66 @@ class RegistroPage extends StatelessWidget {
 
   }
 
+  Widget _crearNombre(LoginBloc bloc) {
+
+    return StreamBuilder(
+      stream: bloc.emailStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        
+      return Container(
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
+
+        child: TextField(
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+            icon: Icon( Icons.perm_contact_calendar, color: Colors.deepPurple ),
+            hintText: 'Juan Perez',
+            labelText: 'Nombre',
+            counterText: snapshot.data,
+            errorText: snapshot.error
+          ),
+          onChanged: bloc.changeEmail,
+        ),
+
+      );
+
+
+      },
+    );
+
+
+  }
+  
+  Widget _crearTipo(LoginBloc bloc) {
+
+    return StreamBuilder(
+      stream: bloc.emailStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        
+      return Container(
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
+
+        child: TextField(
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+            icon: Icon( Icons.alternate_email, color: Colors.deepPurple ),
+            hintText: 'ejemplo@correo.com',
+            labelText: 'Correo electrónico',
+            counterText: snapshot.data,
+            errorText: snapshot.error
+          ),
+          onChanged: bloc.changeEmail,
+        ),
+
+      );
+
+
+      },
+    );
+
+
+  }
+  
   Widget _crearBoton( LoginBloc bloc) {
 
     // formValidStream
@@ -146,7 +210,7 @@ class RegistroPage extends StatelessWidget {
         return RaisedButton(
           child: Container(
             padding: EdgeInsets.symmetric( horizontal: 80.0, vertical: 15.0),
-            child: Text('Ingresar'),
+            child: Text('Registrar'),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0)

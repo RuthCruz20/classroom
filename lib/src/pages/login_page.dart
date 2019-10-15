@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:classroom/src/bloc/provider.dart';
 import 'package:classroom/src/providers/usuario_provider.dart';
 import 'package:classroom/src/utils/utils.dart';
+import 'package:classroom/src/widgets/menu_widget.dart';
 
 class LoginPage extends StatelessWidget {
 
@@ -206,20 +207,20 @@ class LoginPage extends StatelessWidget {
 
     return Stack(
       children: <Widget>[
-        fondoModaro,
+        /*fondoModaro,
         Positioned( top: 90.0, left: 30.0, child: circulo ),
         Positioned( top: -40.0, right: -30.0, child: circulo ),
         Positioned( bottom: -50.0, right: -10.0, child: circulo ),
         Positioned( bottom: 120.0, right: 20.0, child: circulo ),
-        Positioned( bottom: -50.0, left: -20.0, child: circulo ),
+        Positioned( bottom: -50.0, left: -20.0, child: circulo ),*/
         
         Container(
           padding: EdgeInsets.only(top: 80.0),
           child: Column(
             children: <Widget>[
-              Icon( Icons.person_pin_circle, color: Colors.white, size: 100.0 ),
+              Icon( Icons.person_pin_circle, color: Colors.blue, size: 100.0 ),
               SizedBox( height: 10.0, width: double.infinity ),
-              Text('Class Room', style: TextStyle( color: Colors.white, fontSize: 25.0 ))
+              Text('Class Room', style: TextStyle( color: Colors.blue, fontSize: 25.0 ))
             ],
           ),
         )
