@@ -1,6 +1,12 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:classroom/src/providers/establecimientos_provider.dart';
+import 'package:classroom/src/models/establecimiento_model.dart';
 
 class DataSearch extends SearchDelegate {
+
+  final establecimientoProvider = new EstablecimientosProvider();
   
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -38,7 +44,36 @@ class DataSearch extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     // Son las sugerencias que aparecen cuando la persona escribe
-    return Container();
+    if( query.isEmpty ){
+      return Container();
+    }  
+    
+    return FutureBuilder(
+      future: establecimientoProvider.buscarEstablecimiento(query),
+      builder: (context, AsyncSnapshot<List<EstablecimientoModel>> snapshot) {
+        
+        if( snapshot.hasData ){
+          
+          final establecimientos = snapshot.data;
+          
+          return ListView(
+            children: establecimientos.map((establecimientos){
+              return ListTile(
+                leading: Icon(
+                  Icons.location_city,
+                ),
+                title: Text( establecimientos.descripcion ),
+                subtitle: Text( establecimientos.ubicacion ),
+              );
+            }).toList()
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
   }
 
 
