@@ -62,8 +62,8 @@ class DataSearch extends SearchDelegate {
                 leading: Icon(
                   Icons.location_city,
                 ),
-                title: Text( establecimientos.descripcion ),
-                subtitle: Text( establecimientos.ubicacion ),
+                title: Text( establecimientos.id ),
+                subtitle: Text( establecimientos.descripcion ),
               );
             }).toList()
           );

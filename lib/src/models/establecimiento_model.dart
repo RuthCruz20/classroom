@@ -1,9 +1,29 @@
 import 'dart:convert';
 import 'package:latlong/latlong.dart';
 
+ 
 EstablecimientoModel establecimientoModelFromJson(String str) => EstablecimientoModel.fromJson(json.decode(str));
 
 String establecimientoModelToJson(EstablecimientoModel data) => json.encode(data.toJson());
+
+class Establecimiento {
+
+  List<EstablecimientoModel> items = new List();
+
+  Establecimiento();
+
+  Establecimiento.fromJsonList( List<dynamic> jsonList  ) {
+
+    if ( jsonList == null ) return;
+
+    for ( var item in jsonList  ) {
+      final establecimiento = new EstablecimientoModel.fromJson(item);
+      items.add( establecimiento );
+    }
+
+  }
+
+}
 
 class EstablecimientoModel {
     String id;

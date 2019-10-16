@@ -81,15 +81,19 @@ class EstablecimientosProvider {
 
   Future <List<EstablecimientoModel>> buscarEstablecimiento( String query ) async {
 
-    final url = Uri.https(_url, 'establecimientos.json', { 'query' : query });
-    final resp = await http.get(url);
+    final url = '$_url/establecimientos/$query.json';
+
+    final resp = await http.get( url );
+
+    print(resp.body);
 
     final decodedData = json.decode(resp.body);
 
-    final establecimientos = new EstablecimientoModel.fromJson(decodedData);
+    if(decodedData == null) return [];
+    
+    final establecimiento = new Establecimiento.fromJsonList(decodedData['results']);
 
-
-    return establecimientos;
+    return establecimiento.items;
   }
 
 
