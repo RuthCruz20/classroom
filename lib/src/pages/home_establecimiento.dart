@@ -1,9 +1,8 @@
 import 'package:classroom/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:classroom/src/bloc/provider.dart';
+//import 'package:classroom/src/bloc/provider.dart';
 import 'package:classroom/src/providers/establecimientos_provider.dart';
 import 'package:classroom/src/models/establecimiento_model.dart';
-import 'package:classroom/src/utils/utils.dart' as utils;
 
 
 
@@ -15,7 +14,7 @@ class HomeEstablecimiento extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final bloc = Provider.of(context);
+    //final bloc = Provider.of(context);
 
     return Scaffold(
       appBar: AppBar(

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:classroom/src/models/usuario_model.dart';
+import 'package:classroom/src/models/clase_model.dart';
 
 
 HorarioModel horarioModelFromJson(String str) => HorarioModel.fromJson(json.decode(str));
@@ -13,36 +13,26 @@ class HorarioModel{
   String id;
   String hora;
   String estado;
-  List<UsuarioModel> responsables;
+  ClaseModel clase;
 
   HorarioModel({
         this.id,
         this.hora,
         this.estado,
-        this.responsables,
+        this.clase,
     });
 
-    factory HorarioModel.fromJson(Map<String, dynamic> json) {
-      List<UsuarioModel> resList;
-      if (json['responsables']==null){
-      resList = [];
-      }else{
-      var rlist = json['responsables'] as List;
-      resList = rlist.map((i)=>UsuarioModel.fromJson(i)).toList();
-      }
-      return HorarioModel(
+    factory HorarioModel.fromJson(Map<String, dynamic> json) => HorarioModel(
         id            : json["id"],
         hora          : json["hora"],
         estado        : json["estado"],
-        responsables  : resList,
+        clase         : ClaseModel.fromJson(json['clase']),
     );
-    } 
 
     Map<String, dynamic> toJson() => {
         //"id"          : id,
         "hora"        : hora,
         "estado"      : estado,
-        "responsables": responsables,
-        //"responsables": List<Usuario>.from(responsables.map((x) => x.toJson())),
+        "clase"       : clase,
     };
 }

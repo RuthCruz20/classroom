@@ -1,5 +1,3 @@
-import 'package:classroom/src/models/establecimiento_model.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 bool isNumeric( String s ) {
@@ -32,17 +30,4 @@ void mostrarAlerta(BuildContext context, String mensaje ) {
   );
 
 
-}
-
-abrirScan(BuildContext context, EstablecimientoModel scan) async {
-  /*if(scan.tipo == 'http'){
-    if (await canLaunch(scan.valor)) {
-      await launch(scan.valor);
-    } else {
-      throw 'Could not launch ${scan.valor}';
-    }
-  }else {
-    Navigator.pushNamed(context, 'mapa', arguments: scan);
-  }*/
-  Navigator.pushNamed(context, 'mapa_establecimiento', arguments: scan);
 }

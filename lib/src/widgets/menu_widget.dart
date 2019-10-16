@@ -28,9 +28,14 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.party_mode, color: Colors.blue ),
-            title: Text('Scanear'),
-            onTap: (){ },
+            leading: Icon( Icons.calendar_today, color: Colors.blue ),
+            title: Text('Horario Aula1'),
+            onTap: ()=> Navigator.pushReplacementNamed(context, 'horarioAula' ),
+          ),
+          ListTile(
+            leading: Icon( Icons.calendar_today, color: Colors.blue ),
+            title: Text('Horario Aula 2'),
+            onTap: ()=> Navigator.pushReplacementNamed(context, 'calendario' ),
           ),
 
           ListTile(

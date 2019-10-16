@@ -1,6 +1,6 @@
 import 'package:classroom/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:classroom/src/bloc/provider.dart';
+//import 'package:classroom/src/bloc/provider.dart';
 import 'package:classroom/src/providers/aulas_provider.dart';
 import 'package:classroom/src/models/aula_model.dart';
 
@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final bloc = Provider.of(context);
+    //final bloc = Provider.of(context);
 
     return Scaffold(
       appBar: AppBar(
