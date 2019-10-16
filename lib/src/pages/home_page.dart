@@ -1,8 +1,10 @@
-import 'package:classroom/src/widgets/menu_widget.dart';
+
 import 'package:flutter/material.dart';
 //import 'package:classroom/src/bloc/provider.dart';
 import 'package:classroom/src/providers/aulas_provider.dart';
 import 'package:classroom/src/models/aula_model.dart';
+import 'package:classroom/src/search/search_delegate.dart';
+import 'package:classroom/src/widgets/menu_widget.dart';
 
 
 
@@ -18,7 +20,19 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home')
+        title: Text('Home'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: (){
+              showSearch(
+                context: context,
+                delegate: DataSearch(),
+                //query: 'Hola'
+                );
+            },
+          )
+        ],
       ),
       drawer: MenuWidget(),
       body: _crearListado(),

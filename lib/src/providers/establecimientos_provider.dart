@@ -79,6 +79,23 @@ class EstablecimientosProvider {
     return 1;
   }
 
+  Future <List<EstablecimientoModel>> buscarEstablecimiento( String query ) async {
+
+    final url = '$_url/establecimientos/$query.json';
+
+    final resp = await http.get( url );
+
+    print(resp.body);
+
+    final decodedData = json.decode(resp.body);
+
+    if(decodedData == null) return [];
+    
+    final establecimiento = new Establecimiento.fromJsonList(decodedData['results']);
+
+    return establecimiento.items;
+  }
+
 
   
 

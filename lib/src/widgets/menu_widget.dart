@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 
+import 'package:classroom/src/pages/login_page.dart';
 import 'package:classroom/src/pages/home_page.dart';
 
 
@@ -15,19 +17,26 @@ class MenuWidget extends StatelessWidget {
             child: Container(),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/menu-img.jpg'),
+                image: AssetImage('assets/menu.jpg'),
                 fit: BoxFit.cover
               )
             ),
           ),
 
           ListTile(
-            leading: Icon( Icons.pages, color: Colors.blue ),
+            leading: Icon( Icons.supervisor_account, color: Colors.blue ),
+            title: Text('Ingresar'),
+            onTap: ()=> Navigator.pushReplacementNamed(context, LoginPage.routeName ) ,
+          ),
+          
+          ListTile(
+            leading: Icon( Icons.home, color: Colors.blue ),
             title: Text('Home'),
             onTap: ()=> Navigator.pushReplacementNamed(context, HomePage.routeName ) ,
           ),
 
           ListTile(
+<<<<<<< HEAD
             leading: Icon( Icons.calendar_today, color: Colors.blue ),
             title: Text('Horario Aula1'),
             onTap: ()=> Navigator.pushReplacementNamed(context, 'horarioAula' ),
@@ -36,10 +45,15 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.calendar_today, color: Colors.blue ),
             title: Text('Horario Aula 2'),
             onTap: ()=> Navigator.pushReplacementNamed(context, 'calendario' ),
+=======
+            leading: Icon( Icons.camera_front, color: Colors.blue ),
+            title: Text('Scanear'),
+            onTap: (){ },
+>>>>>>> ee4c67890fc4bed41a10e3aa80be92798ff5257d
           ),
 
           ListTile(
-            leading: Icon( Icons.people, color: Colors.blue ),
+            leading: Icon( Icons.location_city, color: Colors.blue ),
             title: Text('Establecimientos'),
             onTap: ()=> Navigator.pushReplacementNamed(context, 'homeEstablecimiento' ) ,
           ),

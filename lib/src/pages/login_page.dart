@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+
 import 'package:classroom/src/bloc/provider.dart';
 import 'package:classroom/src/providers/usuario_provider.dart';
-
 import 'package:classroom/src/utils/utils.dart';
+import 'package:classroom/src/widgets/menu_widget.dart';
 
 class LoginPage extends StatelessWidget {
 
+  static final String routeName = 'login';
   final usuarioProvider = new UsuarioProvider();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+        body: Stack(
         children: <Widget>[
           _crearFondo( context ),
           _loginForm( context ),
         ],
-      )
+      ),
     );
   }
 
@@ -121,7 +124,7 @@ class LoginPage extends StatelessWidget {
             decoration: InputDecoration(
               icon: Icon( Icons.lock_outline, color: Colors.deepPurple ),
               labelText: 'Contraseña',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText: snapshot.error
             ),
             onChanged: bloc.changePassword,
@@ -145,18 +148,37 @@ class LoginPage extends StatelessWidget {
       stream: bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot){
         
-        return RaisedButton(
-          child: Container(
-            padding: EdgeInsets.symmetric( horizontal: 80.0, vertical: 15.0),
-            child: Text('Ingresar'),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0)
-          ),
-          elevation: 0.0,
-          color: Colors.deepPurple,
-          textColor: Colors.white,
-          onPressed: snapshot.hasData ? ()=> _login(bloc, context) : null
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              child: Container(
+                padding: EdgeInsets.symmetric( horizontal: 30.0, vertical: 15.0),
+                child: Text('Ingresar'),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)
+              ),
+              elevation: 0.0,
+              color: Colors.deepPurple,
+              textColor: Colors.white,
+              onPressed: snapshot.hasData ? ()=> _login(bloc, context) : null
+            ),
+            SizedBox(width: 10.0),
+            RaisedButton(
+              child: Container(
+                padding: EdgeInsets.symmetric( horizontal: 30.0, vertical: 15.0),
+                child: Text('Cancelar'),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)
+              ),
+              elevation: 0.0,
+              color: Colors.deepPurple,
+              textColor: Colors.white,
+              onPressed: () => Navigator.pushReplacementNamed(context, 'home')
+            ),
+          ],
         );
       },
     );
@@ -212,7 +234,7 @@ class LoginPage extends StatelessWidget {
         Positioned( bottom: -50.0, left: -20.0, child: circulo ),
         
         Container(
-          padding: EdgeInsets.only(top: 80.0),
+          padding: EdgeInsets.only(top: 30.0),
           child: Column(
             children: <Widget>[
               Icon( Icons.person_pin_circle, color: Colors.white, size: 100.0 ),
