@@ -2,10 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-
 import 'package:classroom/src/models/establecimiento_model.dart';
 import 'package:classroom/src/providers/establecimientos_provider.dart';
-
 
 class EstablecimientoPage extends StatefulWidget {
 
