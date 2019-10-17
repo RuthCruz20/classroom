@@ -18,10 +18,8 @@ class _HorarioAulaPageState extends State<HorarioAulaPage> {
         title: Text("Horario"),
         actions: <Widget>[
           IconButton(icon: Icon(FontAwesomeIcons.coins), onPressed: () {
-
           }),
           IconButton(icon: Icon(FontAwesomeIcons.ellipsisV), onPressed: () {
-            //
           }),
         ],
       ),

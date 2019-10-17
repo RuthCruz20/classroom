@@ -71,7 +71,6 @@ class _AulaPageState extends State<AulaPage> {
         ),
       ),
     );
-
   }
 
   Widget _crearNombre() {
