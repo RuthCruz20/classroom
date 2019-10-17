@@ -19,17 +19,17 @@ class ClaseModel {
 
     factory ClaseModel.fromJson(Map<String, dynamic> json){
       List<dynamic> resList;
-      if (json['profesores']==null){   
-      resList = [];
+      if (json['profesores'] == null){   
+        return ClaseModel();
       }else{
-      var rlist = json['profesores'] as List;
-      resList = rlist.map((i)=>UsuarioModel.fromJson(i)).toList();
+        var rlist = json['profesores'] as List;
+        resList = rlist.map((i)=>UsuarioModel.fromJson(i)).toList();
       }
       return ClaseModel(
         id          : json["id"],
         nombre      : json["nombre"],
         profesores  : resList,
-    );
+      );
     } 
 
     Map<String, dynamic> toJson() => {

@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:classroom/src/pages/login_page.dart';
 import 'package:classroom/src/pages/home_page.dart';
-
 
 class MenuWidget extends StatelessWidget {
   
@@ -36,7 +34,6 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-<<<<<<< HEAD
             leading: Icon( Icons.calendar_today, color: Colors.blue ),
             title: Text('Horario Aula1'),
             onTap: ()=> Navigator.pushReplacementNamed(context, 'horarioAula' ),
@@ -45,11 +42,6 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.calendar_today, color: Colors.blue ),
             title: Text('Horario Aula 2'),
             onTap: ()=> Navigator.pushReplacementNamed(context, 'calendario' ),
-=======
-            leading: Icon( Icons.camera_front, color: Colors.blue ),
-            title: Text('Scanear'),
-            onTap: (){ },
->>>>>>> ee4c67890fc4bed41a10e3aa80be92798ff5257d
           ),
 
           ListTile(
