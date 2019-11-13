@@ -15,8 +15,8 @@ class MenuWidget extends StatelessWidget {
             child: Container(),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/menu.jpg'),
-                fit: BoxFit.cover
+                image: AssetImage('assets/menu.jpeg'),
+                fit: BoxFit.fitWidth
               )
             ),
           ),
@@ -33,7 +33,7 @@ class MenuWidget extends StatelessWidget {
             onTap: ()=> Navigator.pushReplacementNamed(context, HomePage.routeName ) ,
           ),
 
-          ListTile(
+          /*ListTile(
             leading: Icon( Icons.calendar_today, color: Colors.blue ),
             title: Text('Horario Aula1'),
             onTap: ()=> Navigator.pushReplacementNamed(context, 'horarioAula' ),
@@ -42,8 +42,17 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.calendar_today, color: Colors.blue ),
             title: Text('Horario Aula 2'),
             onTap: ()=> Navigator.pushReplacementNamed(context, 'calendario' ),
+          ),*/
+          ListTile(
+            leading: Icon( Icons.calendar_today, color: Colors.blue ),
+            title: Text('Materias'),
+            onTap: ()=> Navigator.pushReplacementNamed(context, 'aulas' ) ,
           ),
-
+          ListTile(
+            leading: Icon( Icons.calendar_today, color: Colors.blue ),
+            title: Text('Aulas'),
+            onTap: ()=> Navigator.pushReplacementNamed(context, 'aulas' ) ,
+          ),
           ListTile(
             leading: Icon( Icons.location_city, color: Colors.blue ),
             title: Text('Establecimientos'),

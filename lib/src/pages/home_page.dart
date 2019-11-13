@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
-//import 'package:classroom/src/bloc/provider.dart';
 import 'package:classroom/src/providers/aulas_provider.dart';
-import 'package:classroom/src/models/aula_model.dart';
 import 'package:classroom/src/search/search_delegate.dart';
 import 'package:classroom/src/widgets/menu_widget.dart';
 
@@ -35,74 +33,28 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: MenuWidget(),
-      body: _crearListado(),
-      floatingActionButton: _crearBoton(context),
-    );
-  }
-
-  Widget _crearListado() {
-
-    return FutureBuilder(
-      future: aulasProvider.cargarAulas(),
-      builder: (BuildContext context, AsyncSnapshot<List<AulaModel>> snapshot) {
-        if ( snapshot.hasData ) {
-
-          final aulas = snapshot.data;
-
-          return ListView.builder(
-            itemCount: aulas.length,
-            itemBuilder: (context, i) => _crearItem(context, aulas[i] ),
-          );
-
-        } else {
-          return Center( child: CircularProgressIndicator());
-        }
-      },
-    );
-  }
-
-  Widget _crearItem(BuildContext context, AulaModel aula ) {
-
-    return Dismissible(
-      key: UniqueKey(),
-      background: Container(
-        color: Colors.red,
+      body: Padding(
+        padding: const EdgeInsets.all(100.0),
+        child: Image(
+                image: AssetImage('assets/logo1.jpeg'),
+                ),
       ),
-      onDismissed: ( direccion ){
-        aulasProvider.borrarAula(aula.id);
-      },
-      child: Card(
-        child: Column(
-          children: <Widget>[
-
-            ( aula.fotoUrl == null ) 
-              ? Image(image: AssetImage('assets/no-image.png'))
-              : FadeInImage(
-                image: NetworkImage( aula.fotoUrl ),
-                placeholder: AssetImage('assets/jar-loading.gif'),
-                height: 300.0,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            
-            ListTile(
-              title: Text('Nombre: ${ aula.nombre } - Establecimiento: ${aula.establecimiento.descripcion}'),
-              subtitle: Text( aula.id ),
-              onTap: () => Navigator.pushNamed(context, 'aula', arguments: aula ),
-            ),
-
-          ],
-        ),
-      )
     );
-
   }
 
-  _crearBoton(BuildContext context) {
-    return FloatingActionButton(
-      child: Icon( Icons.add ),
-      backgroundColor: Colors.deepPurple,
-      onPressed: ()=> Navigator.pushNamed(context, 'aula'),
+Widget _cuerpo(BuildContext context) {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding:  EdgeInsets.only(top: 200),
+            child: Image(
+              image: AssetImage('assets/logo1.jpeg'),
+              ),
+          )
+        ],
+      ),
     );
-}
+  }
+
 }

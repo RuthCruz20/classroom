@@ -33,16 +33,7 @@ class _EstablecimientoPageState extends State<EstablecimientoPage> {
       key: scaffoldKey,
       appBar: AppBar(
         title: Text('Establecimiento'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon( Icons.photo_size_select_actual ),
-            onPressed: (){},
-          ),
-          IconButton(
-            icon: Icon( Icons.camera_alt ),
-            onPressed:(){},
-          ),
-        ],
+        
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -52,7 +43,7 @@ class _EstablecimientoPageState extends State<EstablecimientoPage> {
             child: Column(
               children: <Widget>[
                 _crearDescripcion(),
-                //_crearLocalizacion(),
+                _crearLocalizacion(),
                 _crearBotonGuardar()
               ],
             ),
@@ -132,8 +123,32 @@ class _EstablecimientoPageState extends State<EstablecimientoPage> {
 
   }
 
+  Widget _crearLocalizacion() {
+    return Column(
+          children: <Widget>[
+            Text(''),
+            Text(''),
+            Text('Ubicación Coordenadas QR'),
+            Text(''),
+            Icon(
+              Icons.my_location, 
+              color: Theme.of(context).primaryColor
+            ),
+            Text(''),
+            Text(''),
+            Text(''),
+            Text(''),
 
-  
+          ],
+        
+      );
+    
+    
+    
+  }
+
+
+
 
 }
 

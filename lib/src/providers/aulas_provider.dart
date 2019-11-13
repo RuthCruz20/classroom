@@ -118,7 +118,10 @@ class AulasProvider {
 
 
   }
+  /*List<AulaModel> buscarAula (String query){
+    
 
+  }*/
 
 }
 

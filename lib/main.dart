@@ -1,4 +1,5 @@
 
+import 'package:classroom/src/pages/home_aula_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -40,11 +41,12 @@ class MyApp extends StatelessWidget {
           'registro'           : ( BuildContext context ) => RegistroPage(),
           'home'               : ( BuildContext context ) => HomePage(),
           'aula'               : ( BuildContext context ) => AulaPage(),
+          'aulas'               : ( BuildContext context ) => HomeAulaPage(),
           'establecimiento'    : ( BuildContext context ) => EstablecimientoPage(),
           'homeEstablecimiento': ( BuildContext context ) => HomeEstablecimiento(),
           'mapaEstablecimiento': ( BuildContext context ) => MapaPage(),
           'horarioAula'        : ( BuildContext context ) => HorarioAulaPage(),
-          'calendario'         : ( BuildContext context ) => CalendarioAulaPage(),
+          'calendario'         : ( BuildContext context ) => SearchList(),
         },
         theme: ThemeData(
           primaryColor: Colors.deepPurple,
